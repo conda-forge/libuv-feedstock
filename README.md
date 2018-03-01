@@ -10,7 +10,7 @@ Feedstock license: BSD 3-Clause
 Summary: Cross-platform asynchronous I/O
 
 libuv is a multi-platform support library with a focus on asynchronous I/O.
-It was primarily developed for use by Node.js, but it’s also used by Luvit,
+It was primarily developed for use by Node.js, but it's also used by Luvit,
 Julia, pyuv, and others.
 
 
@@ -69,6 +69,7 @@ To manage the continuous integration and simplify feedstock maintenance
 Using the ``conda-forge.yml`` within this repository, it is possible to re-render all of
 this feedstock's supporting files (e.g. the CI configuration files) with ``conda smithy rerender``.
 
+For more information please check the [conda-forge documentation](https://conda-forge.org/docs/).
 
 Terminology
 ===========
