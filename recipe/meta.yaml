@@ -1,6 +1,6 @@
 {% set name = "libuv" %}
-{% set version = "1.21.0" %}
-{% set sha256 = "c6f53e4a75d2601db8efe0e837839969de7667d36569110429a0bc8f8229bf59" %}
+{% set version = "1.22.0" %}
+{% set sha256 = "c72f0401e1298f948daf310abafce38373a926fb9438464d1bf7fe90784544e0" %}
 
 package:
   name: {{ name|lower }}
