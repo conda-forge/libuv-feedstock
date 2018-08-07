@@ -12,15 +12,17 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win or not py36]
 
 requirements:
   build:
-    - python
     - automake  # [unix]
     - autoconf  # [unix]
     - libtool   # [unix]
+    - {{ compiler('c') }}
+  host:
+    - python
 
 test:
   commands:
