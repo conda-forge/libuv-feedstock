@@ -17,12 +17,12 @@ build:
 
 requirements:
   build:
-    - automake  # [unix]
-    - autoconf  # [unix]
-    - libtool   # [unix]
     - {{ compiler('c') }}
-  host:
-    - python
+    - python 3.6.*         # [win]
+    - automake             # [unix]
+    - autoconf             # [unix]
+    - libtool              # [unix]
+    - make                 # [unix]
 
 test:
   commands:
@@ -50,3 +50,4 @@ about:
 extra:
   recipe-maintainers:
     - frol
+    - mariusvniekerk
