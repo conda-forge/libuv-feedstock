@@ -1,19 +1,16 @@
-{% set name = "libuv" %}
 {% set version = "1.23.2" %}
-{% set sha256 = "30af979c4f4b8d1b895ae6d115f7400c751542ccb9e656350fc89fda08d4eabd" %}
 
 package:
-  name: {{ name|lower }}
+  name: libuv
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://github.com/libuv/libuv/archive/v{{ version }}.tar.gz
+  sha256: 30af979c4f4b8d1b895ae6d115f7400c751542ccb9e656350fc89fda08d4eabd
 
 build:
   number: 1000
-  skip: true  # [win or not py36]
+  skip: true  # [win]
 
 requirements:
   build:
@@ -31,8 +28,7 @@ test:
     - test -f "$PREFIX/lib/libuv.la"  # [unix]
     - test -f "$PREFIX/lib/libuv.so.1"  # [linux]
     - test -f "$PREFIX/lib/libuv.1.dylib"  # [osx]
-    - test -f "$PREFIX/lib/libuv.so"  # [linux]
-    - test -f "$PREFIX/lib/libuv.dylib"  # [osx]
+    - test -f "$PREFIX/lib/libuv${SHLIB_EXT}"  # [not win]
 
 about:
   home: http://libuv.org/
