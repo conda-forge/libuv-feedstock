@@ -12,13 +12,12 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1000
+  number: 1001
   skip: true  # [win or not py36]
 
 requirements:
   build:
     - {{ compiler('c') }}
-    - python 3.6.*         # [win]
     - automake             # [unix]
     - autoconf             # [unix]
     - libtool              # [unix]
@@ -31,8 +30,7 @@ test:
     - test -f "$PREFIX/lib/libuv.la"  # [unix]
     - test -f "$PREFIX/lib/libuv.so.1"  # [linux]
     - test -f "$PREFIX/lib/libuv.1.dylib"  # [osx]
-    - test -f "$PREFIX/lib/libuv.so"  # [linux]
-    - test -f "$PREFIX/lib/libuv.dylib"  # [osx]
+    - test -f "$PREFIX/lib/libuv${SHLIB_EXT}"  # [unix]
 
 about:
   home: http://libuv.org/
