@@ -15,7 +15,6 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-    - python 3.6.*         # [win]
     - automake             # [unix]
     - autoconf             # [unix]
     - libtool              # [unix]
