@@ -1,4 +1,4 @@
-{% set version = "1.26.0" %}
+{% set version = "1.27.0" %}
 
 package:
   name: libuv
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/libuv/libuv/archive/v{{ version }}.tar.gz
-  sha256: e414cf74615b7dae768f0f5667092f1d4975f5067c087bcbe0641e241ebe4693
+  sha256: 4afcdc84cd315b77c8e532e7b3fde43d536af0e2e835eafbd0e75518ed26dbed
 
 build:
   number: 0
