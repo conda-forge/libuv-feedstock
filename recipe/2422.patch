@@ -1,0 +1,39 @@
+From 54a5e9262fedeaf0579e04aa848c97e766f6d50e Mon Sep 17 00:00:00 2001
+From: Ben Noordhuis <info@bnoordhuis.nl>
+Date: Sat, 17 Aug 2019 16:02:37 +0200
+Subject: [PATCH] test: fix typo in DYLD_LIBRARY_PATH
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+It looks like I managed to introduce a typo between two incarnations
+of the pull request, causing the test to fail on macOS when using the
+autotools dynamic library build.
+
+I even managed to spell it correctly in the skip message, just not in
+the actual environment variable lookup... I hang my head in shame at
+such a silly mistake.
+
+Fixes: https://github.com/libuv/libuv/issues/2421
+PR-URL: https://github.com/libuv/libuv/pull/2422
+Refs: https://github.com/libuv/libuv/pull/2408
+Reviewed-By: Colin Ihrig <cjihrig@gmail.com>
+Reviewed-By: Richard Lau <riclau@uk.ibm.com>
+Reviewed-By: Saúl Ibarra Corretgé <saghul@gmail.com>
+---
+ test/test-spawn.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/test-spawn.c b/test/test-spawn.c
+index fec610bfde..be9e2539aa 100644
+--- a/test/test-spawn.c
++++ b/test/test-spawn.c
+@@ -240,7 +240,7 @@ TEST_IMPL(spawn_empty_env) {
+    * in the environment, but of course that doesn't work with
+    * the empty environment that we're testing here.
+    */
+-  if (NULL != getenv("DYLD_LIBARY_PATH") ||
++  if (NULL != getenv("DYLD_LIBRARY_PATH") ||
+       NULL != getenv("LD_LIBRARY_PATH")) {
+     RETURN_SKIP("doesn't work with DYLD_LIBRARY_PATH/LD_LIBRARY_PATH");
+   }
