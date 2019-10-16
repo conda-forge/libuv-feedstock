@@ -1,4 +1,4 @@
-{% set version = "1.32.0" %}
+{% set version = "1.33.0" %}
 
 package:
   name: libuv
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/libuv/libuv/archive/v{{ version }}.tar.gz
-  sha256: c9818f38eee79d4e56f3ae55320d207ab183c5d4aff0fb148b5d6f5702f371cd
+  sha256: d085b46aea791fb7772c274ccc58faadc56fdf6252d3b09b7fb24bd03881efdb
   patches:
     - test-udp-join-1.31.patch  # [osx]
 
