@@ -7,8 +7,8 @@ package:
 source:
   url: https://github.com/libuv/libuv/archive/v{{ version }}.tar.gz
   sha256: 7afa3c8a326b3eed02a9addb584ae7e995ae4d30516cad5e1e4af911931162a6
-  patches:
-    - test-udp-join-1.31.patch  # [osx]
+  # patches:
+    # - test-udp-join-1.31.patch  # [osx]
 
 build:
   number: 0
