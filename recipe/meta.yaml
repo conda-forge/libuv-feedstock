@@ -1,4 +1,4 @@
-{% set version = "1.34.0" %}
+{% set version = "1.38.0" %}
 
 package:
   name: libuv
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/libuv/libuv/archive/v{{ version }}.tar.gz
-  sha256: 2c36b49bcf82c0d06ab0d77f98805605efa071d58ca29dee7c790912598b005d
+  sha256: 2cd9a757fe6c512440933e2bdcab21143d4aa6249b2541399908ce038b756c9d
   patches:
     - test-udp-join-1.31.patch  # [osx]
 
@@ -36,7 +36,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'Cross-platform asynchronous I/O'
+  summary: Cross-platform asynchronous I/O
   description: |
     libuv is a multi-platform support library with a focus on asynchronous I/O.
     It was primarily developed for use by Node.js, but it's also used by Luvit,
