@@ -1,7 +1,8 @@
-From a3777bc180b1dd2233d27abab35451f7bcb3b2b4 Mon Sep 17 00:00:00 2001
-From: Min RK <benjaminrk@gmail.com>
-Date: Tue, 1 Oct 2019 16:26:16 +0200
-Subject: [PATCH] revert test-udp-multicast-join to 1.31
+From 36b94fb78670b6e6c9fb3bc121df70d4eefd76b8 Mon Sep 17 00:00:00 2001
+From: Mark Harfouche <mark.harfouche@gmail.com>
+Date: Mon, 25 May 2020 15:29:45 -0400
+Subject: [PATCH] From: Min RK <benjaminrk@gmail.com> Date: Tue, 1 Oct 2019
+ 16:26:16 +0200 Subject: [PATCH] revert test-udp-multicast-join to 1.31
 
 new test fails on macOS
 
@@ -13,13 +14,12 @@ git checkout v1.31.0 test/test-udp-multicast-join.c
 git commit
 git format-patch v1.32.0
 ```
-
 ---
- test/test-udp-multicast-join.c | 74 ++++++++++------------------------
- 1 file changed, 22 insertions(+), 52 deletions(-)
+ test/test-udp-multicast-join.c | 76 ++++++++++------------------------
+ 1 file changed, 22 insertions(+), 54 deletions(-)
 
 diff --git a/test/test-udp-multicast-join.c b/test/test-udp-multicast-join.c
-index 6bac072d..053d2f79 100644
+index cb3ff871..053d2f79 100644
 --- a/test/test-udp-multicast-join.c
 +++ b/test/test-udp-multicast-join.c
 @@ -29,12 +29,8 @@
@@ -72,7 +72,7 @@ index 6bac072d..053d2f79 100644
    if (nread < 0) {
      ASSERT(0 && "unexpected error");
    }
-@@ -111,35 +90,18 @@ static void cl_recv_cb(uv_udp_t* handle,
+@@ -111,37 +90,18 @@ static void cl_recv_cb(uv_udp_t* handle,
    ASSERT(nread == 4);
    ASSERT(!memcmp("PING", buf->base, nread));
  
@@ -91,8 +91,10 @@ index 6bac072d..053d2f79 100644
 -    r = uv_udp_set_membership(&server, MULTICAST_ADDR, NULL, UV_LEAVE_GROUP);
 -    ASSERT(r == 0);
 -
+-#if !defined(__OpenBSD__) && !defined(__NetBSD__)
 -    r = uv_udp_set_source_membership(&server, MULTICAST_ADDR, NULL, source_addr, UV_JOIN_GROUP);
 -    ASSERT(r == 0);
+-#endif
 -
 -    r = do_send(&req_ss);
 -    ASSERT(r == 0);
@@ -113,7 +115,7 @@ index 6bac072d..053d2f79 100644
  
    r = uv_udp_init(uv_default_loop(), &server);
    ASSERT(r == 0);
-@@ -148,19 +110,27 @@ TEST_IMPL(udp_multicast_join) {
+@@ -150,19 +110,27 @@ TEST_IMPL(udp_multicast_join) {
    ASSERT(r == 0);
  
    /* bind to the desired port */
@@ -145,7 +147,7 @@ index 6bac072d..053d2f79 100644
    ASSERT(r == 0);
  
    ASSERT(close_cb_called == 0);
-@@ -170,8 +140,8 @@ TEST_IMPL(udp_multicast_join) {
+@@ -172,8 +140,8 @@ TEST_IMPL(udp_multicast_join) {
    /* run the loop till all events are processed */
    uv_run(uv_default_loop(), UV_RUN_DEFAULT);
  
@@ -157,5 +159,5 @@ index 6bac072d..053d2f79 100644
  
    MAKE_VALGRIND_HAPPY();
 -- 
-2.23.0
+2.26.2
 
