@@ -3,10 +3,17 @@
 set -x
 
 # We are going to disable some tests on qemu based platforms
-if [ "${target_platform}" == "linux-aarch64" ] || [ "${target_platform}" == "linux-ppc64le" ]; then
-   sed -i '/get_currentexe/d' ./test/test-list.h
-   sed -i '/udp_multicast_interface/d' ./test/test-list.h
-   sed -i '/udp_no_autobind/d' ./test/test-list.h
+# if [ "${target_platform}" == "linux-aarch64" ] || [ "${target_platform}" == "linux-ppc64le" ]; then
+#    sed -i '/get_currentexe/d' ./test/test-list.h
+#    sed -i '/udp_multicast_interface/d' ./test/test-list.h
+#    sed -i '/udp_no_autobind/d' ./test/test-list.h
+# fi
+
+if [ "${target_platform}" == "linux-aarch64" ]; then
+   # These failures have been reported upstream
+   # https://github.com/libuv/libuv/issues/2867
+   sed -i '/random_async/d' ./test/test-list.h
+   sed -i '/random_sync/d' ./test/test-list.h
 fi
 
 # This particular test fails on osx
