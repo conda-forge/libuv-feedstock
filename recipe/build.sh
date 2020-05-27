@@ -32,6 +32,8 @@ LIBTOOLIZE=libtoolize sh ./autogen.sh
    --prefix="$PREFIX" \
 
 make
+ls -lah
+ls -lah build
 strace -s 256 -f build/uv_run_tests_a random_sync random_sync
 make check
 make install
