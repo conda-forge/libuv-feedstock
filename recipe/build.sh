@@ -33,10 +33,11 @@ LIBTOOLIZE=libtoolize sh ./autogen.sh
 
 make
 make check TESTS=
+# Install first so strace works???
+make install
 ls -lah
 ls -lah test
 ls -lah test/.libs
 find -name run-tests
 strace -s 256 -f test/.libs/run-tests random_sync random_sync
 make check
-make install
