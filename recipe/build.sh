@@ -33,6 +33,8 @@ LIBTOOLIZE=libtoolize sh ./autogen.sh
 
 make
 ls -lah
+ls -lah test
+ls -lah test/libs
 find -name uv_run_tests_a
 strace -s 256 -f test/libs/run-tests random_sync random_sync
 make check
