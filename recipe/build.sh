@@ -32,6 +32,7 @@ LIBTOOLIZE=libtoolize sh ./autogen.sh
    --prefix="$PREFIX" \
 
 make
+make tests
 ls -lah
 ls -lah test
 ls -lah test/.libs
