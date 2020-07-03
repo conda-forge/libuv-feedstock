@@ -5,7 +5,7 @@ Home: http://libuv.org/
 
 Package license: MIT
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: Cross-platform asynchronous I/O
 
