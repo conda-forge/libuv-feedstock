@@ -5,7 +5,7 @@ Home: http://libuv.org/
 
 Package license: MIT
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: Cross-platform asynchronous I/O
 
@@ -46,6 +46,13 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
+              <td>linux_64_target_platformlinux-64</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=579&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libuv-feedstock?branchName=master&jobName=linux&configuration=linux_64_target_platformlinux-64" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
               <td>linux_aarch64_target_platformlinux-aarch64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=579&branchName=master">
@@ -60,29 +67,16 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>linux_target_platformlinux-64</td>
+              <td>osx_64_target_platformosx-64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=579&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libuv-feedstock?branchName=master&jobName=linux&configuration=linux_target_platformlinux-64" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_target_platformosx-64</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=579&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libuv-feedstock?branchName=master&jobName=osx&configuration=osx_target_platformosx-64" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libuv-feedstock?branchName=master&jobName=osx&configuration=osx_64_target_platformosx-64" alt="variant">
                 </a>
               </td>
             </tr>
           </tbody>
         </table>
       </details>
-    </td>
-  </tr>
-  <tr>
-    <td>Windows</td>
-    <td>
-      <img src="https://img.shields.io/badge/Windows-disabled-lightgrey.svg" alt="Windows disabled">
     </td>
   </tr>
 </table>
