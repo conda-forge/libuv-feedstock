@@ -1,4 +1,4 @@
-{% set version = "1.41.1" %}
+{% set version = "1.42.0" %}
 
 package:
   name: libuv
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/libuv/libuv/archive/v{{ version }}.tar.gz
-  sha256: 62c29d1d76b0478dc8aaed0ed1f874324f6cd2d6ff4cb59a44026c09e818cd53
+  sha256: 371e5419708f6aaeb8656671f89400b92a9bba6443369af1bb70bcd6e4b3c764
   patches:
     - 0001-Use-Unix-install-logic-for-MSVC.patch
     - test-udp-join-1.31.patch  # [osx]
