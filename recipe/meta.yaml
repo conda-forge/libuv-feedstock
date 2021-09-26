@@ -23,6 +23,8 @@ requirements:
     - make                 # [unix]
     - sed                  # [osx]
     - cmake                # [win]
+  host:
+    - libnsl
 
 test:
   commands:
