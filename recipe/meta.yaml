@@ -24,7 +24,7 @@ requirements:
     - sed                  # [osx]
     - cmake                # [win]
   host:
-    - libnsl
+    - libnsl  # [linux]
 
 test:
   commands:
