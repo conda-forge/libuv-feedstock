@@ -2,8 +2,7 @@ mkdir build
 cd build
 
 cmake ^
+  %CMAKE_ARGS% ^
   -G "NMake Makefiles" ^
-  -D CMAKE_BUILD_TYPE=Release ^
-  -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
   ..
 nmake install
