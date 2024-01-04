@@ -3,6 +3,10 @@ About libuv-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/libuv-feedstock/blob/main/LICENSE.txt)
 
+
+About libuv
+-----------
+
 Home: http://libuv.org/
 
 Package license: MIT
@@ -16,6 +20,16 @@ Documentation: http://docs.libuv.org/
 libuv is a multi-platform support library with a focus on asynchronous I/O.
 It was primarily developed for use by Node.js, but it's also used by Luvit,
 Julia, pyuv, and others.
+
+
+About _libuv_api
+----------------
+
+
+
+Package license: 
+
+Summary: An empty package that prevents multiple ABIs being installed simultaneously on Windows.
 
 
 Current build status
@@ -90,7 +104,10 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-_libuv_api-green.svg)](https://anaconda.org/conda-forge/_libuv_api) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/_libuv_api.svg)](https://anaconda.org/conda-forge/_libuv_api) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/_libuv_api.svg)](https://anaconda.org/conda-forge/_libuv_api) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/_libuv_api.svg)](https://anaconda.org/conda-forge/_libuv_api) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libuv-green.svg)](https://anaconda.org/conda-forge/libuv) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libuv.svg)](https://anaconda.org/conda-forge/libuv) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libuv.svg)](https://anaconda.org/conda-forge/libuv) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libuv.svg)](https://anaconda.org/conda-forge/libuv) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libuv--static-green.svg)](https://anaconda.org/conda-forge/libuv-static) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libuv-static.svg)](https://anaconda.org/conda-forge/libuv-static) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libuv-static.svg)](https://anaconda.org/conda-forge/libuv-static) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libuv-static.svg)](https://anaconda.org/conda-forge/libuv-static) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libuv1-green.svg)](https://anaconda.org/conda-forge/libuv1) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libuv1.svg)](https://anaconda.org/conda-forge/libuv1) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libuv1.svg)](https://anaconda.org/conda-forge/libuv1) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libuv1.svg)](https://anaconda.org/conda-forge/libuv1) |
 
 Installing libuv
 ================
@@ -102,41 +119,41 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `libuv` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `_libuv_api, libuv, libuv-static, libuv1` can be installed with `conda`:
 
 ```
-conda install libuv
-```
-
-or with `mamba`:
-
-```
-mamba install libuv
-```
-
-It is possible to list all of the versions of `libuv` available on your platform with `conda`:
-
-```
-conda search libuv --channel conda-forge
+conda install _libuv_api libuv libuv-static libuv1
 ```
 
 or with `mamba`:
 
 ```
-mamba search libuv --channel conda-forge
+mamba install _libuv_api libuv libuv-static libuv1
+```
+
+It is possible to list all of the versions of `_libuv_api` available on your platform with `conda`:
+
+```
+conda search _libuv_api --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search _libuv_api --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search libuv --channel conda-forge
+mamba repoquery search _libuv_api --channel conda-forge
 
-# List packages depending on `libuv`:
-mamba repoquery whoneeds libuv --channel conda-forge
+# List packages depending on `_libuv_api`:
+mamba repoquery whoneeds _libuv_api --channel conda-forge
 
-# List dependencies of `libuv`:
-mamba repoquery depends libuv --channel conda-forge
+# List dependencies of `_libuv_api`:
+mamba repoquery depends _libuv_api --channel conda-forge
 ```
 
 
@@ -158,7 +175,7 @@ available continuous integration services. Thanks to the awesome service provide
 [CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
 [Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
 it is possible to build and upload installable packages to the
-[conda-forge](https://anaconda.org/conda-forge) [Anaconda-Cloud](https://anaconda.org/)
+[conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.
 
 To manage the continuous integration and simplify feedstock maintenance
