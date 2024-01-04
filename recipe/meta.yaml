@@ -3,7 +3,7 @@
 {% set library = "Library/" if (target_platform == "win-64") else "" %}
 
 package:
-  name: libuv
+  name: libuv-split
   version: {{ version }}
 
 source:
@@ -120,3 +120,4 @@ extra:
   recipe-maintainers:
     - frol
     - mariusvniekerk
+  feedstock-name: libuv
