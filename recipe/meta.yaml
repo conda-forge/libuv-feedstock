@@ -1,4 +1,6 @@
 {% set version = "1.46.0" %}
+{% set so_major = "1" %}
+{% set library = "Library/" if (target_platform == "win-64") else "" %}
 
 package:
   name: libuv
@@ -12,9 +14,7 @@ source:
     - boottime.patch
 
 build:
-  number: 0
-  run_exports:
-    - {{ pin_subpackage('libuv', max_pin='x') }}
+  number: 1
 
 requirements:
   build:
@@ -27,18 +27,81 @@ requirements:
     - cmake                # [win]
     - ninja                # [win]
 
-test:
-  commands:
-    - test -f "$PREFIX/include/uv.h"    # [unix]
-    - test -f "$PREFIX/lib/libuv.a"     # [unix]
-    - test -f "$PREFIX/lib/libuv.so.1"  # [linux]
-    - test -f "$PREFIX/lib/libuv.1.dylib"  # [osx]
-    - test -f "$PREFIX/lib/libuv${SHLIB_EXT}"  # [not win]
-    - test -f "$PREFIX/lib/pkgconfig/libuv.pc"  # [not win]
-    - if not exist %LIBRARY_INC%\uv.h (exit 1)      # [win]
-    - if not exist %LIBRARY_LIB%\uv.lib (exit 1)    # [win]
-    - if not exist %LIBRARY_BIN%\uv.dll (exit 1)    # [win]
-    - if not exist %LIBRARY_LIB%\pkgconfig/libuv.pc (exit 1)         # [win]
+outputs:
+
+  - name: libuv
+    build:
+      run_exports:
+        - {{ pin_subpackage('libuv' ~ so_major) }}
+    requirements:
+      build:
+        - {{ compiler('c') }}
+      host:
+        - {{ pin_subpackage('libuv' ~ so_major, exact=True) }}
+      run:
+        - {{ pin_subpackage('libuv' ~ so_major, exact=True) }}
+    files:
+      - {{ library }}/include/uv.h
+      - {{ library }}/include/uv
+      - {{ library }}/lib/libuv{{ SHLIB_EXT }}  # [unix]
+      - {{ library }}/lib/uv.lib  # [win]
+      - {{ library }}/lib/pkgconfig/libuv.pc
+      - {{ library }}/lib/cmake/libuv
+    test:
+      commands:
+      # Needed
+        - test -f "$PREFIX/include/uv.h"    # [unix]
+        - test -f "$PREFIX/lib/libuv.so.1"  # [linux]
+        - test -f "$PREFIX/lib/libuv.1.dylib"  # [osx]
+        - test -f "$PREFIX/lib/libuv${SHLIB_EXT}"  # [not win]
+        - test -f "$PREFIX/lib/pkgconfig/libuv.pc"  # [not win]
+        - if not exist %LIBRARY_INC%\uv.h (exit 1)      # [win]
+        - if not exist %LIBRARY_LIB%\uv.lib (exit 1)    # [win]
+        - if not exist %LIBRARY_BIN%\uv.dll (exit 1)    # [win]
+        - if not exist %LIBRARY_LIB%\pkgconfig/libuv.pc (exit 1)         # [win]
+      # Excluded
+        - test ! -f "$PREFIX/lib/libuv.a"     # [unix]
+
+  - name: libuv-static
+    files:
+      - {{ library }}/lib/libuv.a  # [unix]
+      - {{ library }}/lib/uv_a.lib  # [win]
+      - {{ library }}/lib/pkgconfig/libuv-static.pc
+    test:
+      commands:
+        - test -f "$PREFIX/lib/libuv.a"  # [unix]
+        - if not exist %LIBRARY_LIB%\uv_a.lib (exit 1)    # [win]
+        - if not exist %LIBRARY_LIB%\pkgconfig/libuv-static.pc (exit 1)  # [win]
+
+  - name: libuv{{ so_major }}
+    build:
+      run_exports:
+        - {{ pin_subpackage('libuv' ~ so_major) }}
+    requirements:
+      build:
+        - {{ compiler('c') }}
+      run:
+        - {{ pin_subpackage('_libuv_api', max_pin='x.x.x') }}               # [win]
+    files:
+      - {{ library }}/lib/libuv.so.{{ so_major }}*                    # [linux]
+      - {{ library }}/lib/libuv.{{ so_major }}*.dylib                 # [osx]
+      - {{ library }}/bin/uv.dll                                      # [win]
+    test:
+      commands:
+        - test -f "$PREFIX/lib/libuv.so.1"  # [linux]
+        - test -f "$PREFIX/lib/libuv.1.dylib"  # [osx]
+        - if not exist %LIBRARY_BIN%\uv.dll (exit 1)  # [win]
+
+  # Clobber preventer for Windows; prevents multiple dll files from being
+  # installed simultaneously. This lets us avoid exporting a strict pin on the
+  # API which is not strictly correlated with the ABI.
+  - name: _libuv_api
+    build:
+      skip: true  # [not win]
+    about:
+      summary: >
+        An empty package that prevents multiple ABIs being installed
+        simultaneously on Windows.
 
 about:
   home: http://libuv.org/
