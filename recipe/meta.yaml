@@ -65,12 +65,12 @@ outputs:
   - name: libuv-static
     files:
       - {{ library }}lib/libuv.a  # [unix]
-      - {{ library }}lib/uv_a.lib  # [win]
+      - {{ library }}lib/libuv.lib  # [win]
       - {{ library }}lib/pkgconfig/libuv-static.pc
     test:
       commands:
         - test -f "$PREFIX/lib/libuv.a"  # [unix]
-        - if not exist %LIBRARY_LIB%\uv_a.lib (exit 1)    # [win]
+        - if not exist %LIBRARY_LIB%\libuv.lib (exit 1)    # [win]
         - if not exist %LIBRARY_LIB%\pkgconfig/libuv-static.pc (exit 1)  # [win]
 
   - name: libuv{{ so_major }}
