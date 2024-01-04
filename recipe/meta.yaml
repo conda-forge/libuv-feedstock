@@ -41,12 +41,12 @@ outputs:
       run:
         - {{ pin_subpackage('libuv' ~ so_major, exact=True) }}
     files:
-      - {{ library }}/include/uv.h
-      - {{ library }}/include/uv
-      - {{ library }}/lib/libuv{{ SHLIB_EXT }}  # [unix]
-      - {{ library }}/lib/uv.lib  # [win]
-      - {{ library }}/lib/pkgconfig/libuv.pc
-      - {{ library }}/lib/cmake/libuv
+      - {{ library }}include/uv.h
+      - {{ library }}include/uv
+      - {{ library }}lib/libuv{{ SHLIB_EXT }}  # [unix]
+      - {{ library }}lib/uv.lib  # [win]
+      - {{ library }}lib/pkgconfig/libuv.pc
+      - {{ library }}lib/cmake/libuv
     test:
       commands:
       # Needed
@@ -64,9 +64,9 @@ outputs:
 
   - name: libuv-static
     files:
-      - {{ library }}/lib/libuv.a  # [unix]
-      - {{ library }}/lib/uv_a.lib  # [win]
-      - {{ library }}/lib/pkgconfig/libuv-static.pc
+      - {{ library }}lib/libuv.a  # [unix]
+      - {{ library }}lib/uv_a.lib  # [win]
+      - {{ library }}lib/pkgconfig/libuv-static.pc
     test:
       commands:
         - test -f "$PREFIX/lib/libuv.a"  # [unix]
@@ -83,9 +83,9 @@ outputs:
       run:
         - {{ pin_subpackage('_libuv_api', max_pin='x.x.x') }}               # [win]
     files:
-      - {{ library }}/lib/libuv.so.{{ so_major }}*                    # [linux]
-      - {{ library }}/lib/libuv.{{ so_major }}*.dylib                 # [osx]
-      - {{ library }}/bin/uv.dll                                      # [win]
+      - {{ library }}lib/libuv.so.{{ so_major }}*                    # [linux]
+      - {{ library }}lib/libuv.{{ so_major }}*.dylib                 # [osx]
+      - {{ library }}bin/uv.dll                                      # [win]
     test:
       commands:
         - test -f "$PREFIX/lib/libuv.so.1"  # [linux]
