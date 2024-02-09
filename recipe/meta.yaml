@@ -24,7 +24,7 @@ requirements:
     - libtool              # [unix]
     - make                 # [unix]
     - sed                  # [osx]
-    - cmake                # [win]
+    - cmake-no-system      # [win]
     - ninja                # [win]
 
 test:
