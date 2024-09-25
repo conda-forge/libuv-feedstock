@@ -207,5 +207,6 @@ Feedstock Maintainers
 =====================
 
 * [@frol](https://github.com/frol/)
+* [@jjerphan](https://github.com/jjerphan/)
 * [@mariusvniekerk](https://github.com/mariusvniekerk/)
 
