@@ -1,4 +1,4 @@
-{% set version = "1.49.2" %}
+{% set version = "1.50.0" %}
 
 package:
   name: libuv
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/libuv/libuv/archive/v{{ version }}.tar.gz
-  sha256: 388ffcf3370d4cf7c4b3a3205504eea06c4be5f9e80d2ab32d19f8235accc1cf
+  sha256: b1ec56444ee3f1e10c8bd3eed16ba47016ed0b94fe42137435aaf2e0bd574579
   patches:
     # linux.c:1638:21: error: 'CLOCK_BOOTTIME' undeclared
     - boottime.patch
