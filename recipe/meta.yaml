@@ -12,7 +12,7 @@ source:
     - boottime.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('libuv', max_pin='x') }}
 
