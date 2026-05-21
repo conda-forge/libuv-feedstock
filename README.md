@@ -17,7 +17,6 @@ libuv is a multi-platform support library with a focus on asynchronous I/O.
 It was primarily developed for use by Node.js, but it's also used by Luvit,
 Julia, pyuv, and others.
 
-
 Current build status
 ====================
 
@@ -168,12 +167,12 @@ it is possible to build and upload installable packages to the
 [conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.
 
-To manage the continuous integration and simplify feedstock maintenance
+To manage the continuous integration and simplify feedstock maintenance,
 [conda-smithy](https://github.com/conda-forge/conda-smithy) has been developed.
 Using the ``conda-forge.yml`` within this repository, it is possible to re-render all of
 this feedstock's supporting files (e.g. the CI configuration files) with ``conda smithy rerender``.
 
-For more information please check the [conda-forge documentation](https://conda-forge.org/docs/).
+For more information, please check the [conda-forge documentation](https://conda-forge.org/docs/).
 
 Terminology
 ===========
@@ -200,7 +199,7 @@ merged, the recipe will be re-built and uploaded automatically to the
 everybody to install and use from the `conda-forge` channel.
 Note that all branches in the conda-forge/libuv-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
-on branches in forks and branches in the main repository should only be used to
+on branches in forks, and branches in the main repository should only be used to
 build distinct package versions.
 
 In order to produce a uniquely identifiable distribution:
@@ -216,4 +215,5 @@ Feedstock Maintainers
 * [@frol](https://github.com/frol/)
 * [@jjerphan](https://github.com/jjerphan/)
 * [@mariusvniekerk](https://github.com/mariusvniekerk/)
+* [@xhochy](https://github.com/xhochy/)
 
