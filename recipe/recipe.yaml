@@ -22,6 +22,7 @@ requirements:
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
     - if: unix
+      then:
         - automake
         - autoconf
         - libtool
@@ -38,18 +39,19 @@ tests:
         - uv.h
       lib:
         - uv
-      not_exists:
-        - lib/libuv.a
       files:
-        - if: osx
-          then: lib/libuv.1.dylib
-        - if: linux
-          then: lib/libuv.so.1
-        - if: win
-          then: Library/lib/pkgconfig/libuv.pc
-          else: lib/pkgconfig/libuv.pc
-        - if: win
-          then: Library/lib/uv.lib
+        exists:
+          - if: osx
+            then: lib/libuv.1.dylib
+          - if: linux
+            then: lib/libuv.so.1
+          - if: win
+            then: Library/lib/pkgconfig/libuv.pc
+            else: lib/pkgconfig/libuv.pc
+          - if: win
+            then: Library/lib/uv.lib
+        not_exists:
+          - lib/libuv.a
 
 about:
   license: MIT

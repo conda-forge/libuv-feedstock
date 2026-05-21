@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -exuo pipefail
 
 # We are going to disable some tests on qemu based platforms
 # if [ "${target_platform}" == "linux-aarch64" ] || [ "${target_platform}" == "linux-ppc64le" ]; then
@@ -34,12 +34,13 @@ export CPPFLAGS="-D__QEMU__=1 $CPPFLAGS"
 fi
 
 ./configure \
+   --disable-static \
    --disable-dependency-tracking \
    --disable-silent-rules \
    --prefix="$PREFIX" \
 
-make
-if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
-make check
+make -j${CPU_COUNT}
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-0}" != "1" ]]; then
+  make check
 fi
 make install
