@@ -15,7 +15,7 @@ source:
     - boottime.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -46,10 +46,10 @@ tests:
           - if: linux
             then: lib/libuv.so.1
           - if: win
-            then: Library/lib/pkgconfig/libuv.pc
+            then:
+              - Library/lib/pkgconfig/libuv.pc
+              - Library/lib/uv.lib
             else: lib/pkgconfig/libuv.pc
-          - if: win
-            then: Library/lib/uv.lib
         not_exists:
           - lib/libuv.a
 
